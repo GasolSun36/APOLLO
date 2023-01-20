@@ -56,8 +56,8 @@ python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=8889 Main
 --neg_rate 3 \
 --max_seq_length 512 --batch_size 8 --gradient_accumulation_steps 1 \
 --learning_rate 2e-5 --epoch 50 --report 500 \
---features_dir /colab_space/sunjiashuo/FinQA/dataset/retriever/ \
---examples_dir /colab_space/sunjiashuo/FinQA/dataset/retriever/ \
+--features_dir /colab_space/sunjiashuo/APOLLO/dataset/retriever/ \
+--examples_dir /colab_space/sunjiashuo/APOLLO/dataset/retriever/ \
 --tags 1 \
 --dataset_type finqa
 ```
@@ -71,8 +71,8 @@ python -u -m torch.distributed.launch --nproc_per_node=1 --master_port=8899 Main
 --pretrained_model deberta \
 --model_size microsoft/deberta-v3-large \
 --mode inference \
---features_dir /colab_space/sunjiashuo/FinQA/dataset/retriever/ \
---examples_dir /colab_space/sunjiashuo/FinQA/dataset/retriever/ \
+--features_dir /colab_space/sunjiashuo/APOLLO/dataset/retriever/ \
+--examples_dir /colab_space/sunjiashuo/APOLLO/dataset/retriever/ \
 --saved_model_path "the path of your selected checkpoint in the training" \
 --dataset_type finqa --tags 2 
 ```
@@ -108,8 +108,8 @@ python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=7889 Main
 --retrieve_mode single --program_mode seq \
 --max_seq_length 512 --batch_size 8 --gradient_accumulation_steps 1 \
 --learning_rate 2e-5 --epoch 50 --max_program_length 30 --report 500 \
---features_dir /colab_space/sunjiashuo/FinQA/dataset/generator/ \
---examples_dir /colab_space/sunjiashuo/FinQA/dataset/generator/ \
+--features_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
+--examples_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
 --tags 1 \
 --dataset_type finqa
 ```
@@ -123,8 +123,8 @@ python -u -m torch.distributed.launch --nproc_per_node=1 --master_port=7899 Main
 --pretrained_model roberta \
 --model_size roberta-large \
 --mode inference \
---features_dir /colab_space/sunjiashuo/FinQA/dataset/generator/ \
---examples_dir /colab_space/sunjiashuo/FinQA/dataset/generator/ \
+--features_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
+--examples_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
 --tags 2 \
 --saved_model_path "the path of your selected checkpoint in the training" \
 --dataset_type finqa
@@ -139,8 +139,8 @@ python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=6899 Main
 --pretrained_model roberta \
 --model_size roberta-large \
 --mode train \
---features_dir /colab_space/sunjiashuo/FinQA/dataset/generator/ \
---examples_dir /colab_space/sunjiashuo/FinQA/dataset/generator/ \
+--features_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
+--examples_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
 --tags 3 \
 --saved_model_path "the path of your selected checkpoint in the supervised training" \
 --dataset_type finqa --rl
@@ -200,8 +200,8 @@ python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=5899 Main
 --pretrained_model roberta \
 --model_size roberta-large \
 --mode train \
---features_dir /colab_space/sunjiashuo/FinQA/dataset/generator_tpa/ \
---examples_dir /colab_space/sunjiashuo/FinQA/dataset/generator_tpa/ \
+--features_dir /colab_space/sunjiashuo/APOLLO/dataset/generator_tpa/ \
+--examples_dir /colab_space/sunjiashuo/APOLLO/dataset/generator_tpa/ \
 --tags 4 \
 --saved_model_path "the path of your selected checkpoint in the supervised training" \
 --dataset_type finqa --tpa \

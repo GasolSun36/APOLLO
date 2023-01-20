@@ -129,21 +129,7 @@ python -u -m torch.distributed.launch --nproc_per_node=1 --master_port=7899 Main
 --saved_model_path "the path of your selected checkpoint in the training" \
 --dataset_type finqa
 ```
-#### Consistency-based Reinforcement learning
-In order to adopt reinforcement learning, you need to train a model in the above process. Then, you can run:
-```bash
-python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=6899 Main.py\
---root_path "/colab_space/sunjiashuo/APOLLO/" \
---model_save_name generator-roberta-large \
---pretrained_model roberta \
---model_size roberta-large \
---mode train \
---features_dir /colab_space/sunjiashuo/FinQA/dataset/generator/ \
---examples_dir /colab_space/sunjiashuo/FinQA/dataset/generator/ \
---tags 3 \
---saved_model_path "the path of your selected checkpoint in the supervised training" \
---dataset_type finqa --rl
-```
+
 #### Consistency-based Reinforcement learning
 In order to adopt reinforcement learning, you need to train a model in the above process. Then, you can run:
 ```bash

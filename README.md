@@ -36,7 +36,7 @@ To train the retriever, you can run:
 
 ```bash
 python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=8889 Main.py\
---root_path "/colab_space/sunjiashuo/APOLLO/" \
+--root_path "/APOLLO/" \
 --model_save_name retriever-deberta \
 --pretrained_model deberta \
 --model_size microsoft/deberta-v3-large \
@@ -44,8 +44,8 @@ python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=8889 Main
 --neg_rate 3 \
 --max_seq_length 512 --batch_size 8 --gradient_accumulation_steps 1 \
 --learning_rate 2e-5 --epoch 50 --report 500 \
---features_dir /colab_space/sunjiashuo/APOLLO/dataset/retriever/ \
---examples_dir /colab_space/sunjiashuo/APOLLO/dataset/retriever/ \
+--features_dir /APOLLO/dataset/retriever/ \
+--examples_dir /APOLLO/dataset/retriever/ \
 --tags 1 \
 --dataset_type finqa
 ```
@@ -54,13 +54,13 @@ To inference, you can run:
 
 ```bash
 python -u -m torch.distributed.launch --nproc_per_node=1 --master_port=8899 Main.py\
---root_path "/colab_space/sunjiashuo/APOLLO/" \
+--root_path "/APOLLO/" \
 --model_save_name retriever-deberta \
 --pretrained_model deberta \
 --model_size microsoft/deberta-v3-large \
 --mode inference \
---features_dir /colab_space/sunjiashuo/APOLLO/dataset/retriever/ \
---examples_dir /colab_space/sunjiashuo/APOLLO/dataset/retriever/ \
+--features_dir /APOLLO/dataset/retriever/ \
+--examples_dir /APOLLO/dataset/retriever/ \
 --saved_model_path "the path of your selected checkpoint in the training" \
 --dataset_type finqa --tags 2 
 ```
@@ -68,7 +68,7 @@ python -u -m torch.distributed.launch --nproc_per_node=1 --master_port=8899 Main
 To convert data for generator training, you can run:
 ```bash
 python -u -m torch.distributed.launch --nproc_per_node=1 --master_port=8999 Main.py\
---root_path "/colab_space/sunjiashuo/APOLLO/" \
+--root_path "/APOLLO/" \
 --model_save_name retriever-deberta \
 --pretrained_model deberta \
 --model_size microsoft/deberta-v3-large \
@@ -88,7 +88,7 @@ To train the retriever, you can run:
 
 ```bash
 python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=7889 Main.py\
---root_path "/colab_space/sunjiashuo/APOLLO/" \
+--root_path "/APOLLO/" \
 --model_save_name generator-roberta-large \
 --pretrained_model roberta \
 --model_size roberta-large \
@@ -96,8 +96,8 @@ python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=7889 Main
 --retrieve_mode single --program_mode seq \
 --max_seq_length 512 --batch_size 8 --gradient_accumulation_steps 1 \
 --learning_rate 2e-5 --epoch 50 --max_program_length 30 --report 500 \
---features_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
---examples_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
+--features_dir /APOLLO/dataset/generator/ \
+--examples_dir /APOLLO/dataset/generator/ \
 --tags 1 \
 --dataset_type finqa
 ```
@@ -106,13 +106,13 @@ To inference, you can run:
 
 ```bash
 python -u -m torch.distributed.launch --nproc_per_node=1 --master_port=7899 Main.py\
---root_path "/colab_space/sunjiashuo/APOLLO/" \
+--root_path "/APOLLO/" \
 --model_save_name generator-roberta-large \
 --pretrained_model roberta \
 --model_size roberta-large \
 --mode inference \
---features_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
---examples_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
+--features_dir /APOLLO/dataset/generator/ \
+--examples_dir /APOLLO/dataset/generator/ \
 --tags 2 \
 --saved_model_path "the path of your selected checkpoint in the training" \
 --dataset_type finqa
@@ -122,13 +122,13 @@ python -u -m torch.distributed.launch --nproc_per_node=1 --master_port=7899 Main
 In order to adopt reinforcement learning, you need to train a model in the above process. Then, you can run:
 ```bash
 python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=6899 Main.py\
---root_path "/colab_space/sunjiashuo/APOLLO/" \
+--root_path "/APOLLO/" \
 --model_save_name generator-roberta-large \
 --pretrained_model roberta \
 --model_size roberta-large \
 --mode train \
---features_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
---examples_dir /colab_space/sunjiashuo/APOLLO/dataset/generator/ \
+--features_dir /APOLLO/dataset/generator/ \
+--examples_dir /APOLLO/dataset/generator/ \
 --tags 3 \
 --saved_model_path "the path of your selected checkpoint in the supervised training" \
 --dataset_type finqa --rl
@@ -151,8 +151,8 @@ python data_process.py
 In particular, you need to edit:
 
 ```python
-examples_dir = "/colab_space/sunjiashuo/APOLLO/dataset/generator/"
-features_dir = "/colab_space/sunjiashuo/APOLLO/dataset/generator/"
+examples_dir = "/APOLLO/dataset/generator/"
+features_dir = "/APOLLO/dataset/generator/"
 if dataset_type == "finqa":
     train_file = root_path + "dataset/FinQA/train_retrieve_output.json"
 else:
@@ -166,8 +166,8 @@ f = open(os.path.join(features_dir, 'test_features.pickle'), 'wb')
 ```
 to 
 ```python
-examples_dir = "/colab_space/sunjiashuo/APOLLO/dataset/generator_tpa/"
-features_dir = "/colab_space/sunjiashuo/APOLLO/dataset/generator_tpa/"
+examples_dir = "/APOLLO/dataset/generator_tpa/"
+features_dir = "/APOLLO/dataset/generator_tpa/"
 if dataset_type == "finqa":
     train_file = root_path + "dataset/FinQA/train_TPA_Switch.json"  # or other TPA methods
 else:
@@ -183,13 +183,13 @@ f = open(os.path.join(features_dir, 'test_features_switch.pickle'), 'wb')
 Then, you can run this command in `/Generator`:
 ```bash
 python -u -m torch.distributed.launch --nproc_per_node=2 --master_port=5899 Main.py\
---root_path "/colab_space/sunjiashuo/APOLLO/" \
+--root_path "/APOLLO/" \
 --model_save_name generator-roberta-large \
 --pretrained_model roberta \
 --model_size roberta-large \
 --mode train \
---features_dir /colab_space/sunjiashuo/APOLLO/dataset/generator_tpa/ \
---examples_dir /colab_space/sunjiashuo/APOLLO/dataset/generator_tpa/ \
+--features_dir /APOLLO/dataset/generator_tpa/ \
+--examples_dir /APOLLO/dataset/generator_tpa/ \
 --tags 4 \
 --saved_model_path "the path of your selected checkpoint in the supervised training" \
 --dataset_type finqa --tpa \

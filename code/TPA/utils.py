@@ -4,8 +4,7 @@ import tqdm
 import json
 import torch.utils.data as torchdata
 
-sys.path.insert(0, '../generator/')
-from utils import *
+from generator.utils import *
 
 
 def program_tokens_to_program(program_tokens):

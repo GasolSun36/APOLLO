@@ -7,8 +7,7 @@ import sys
 from sympy import simplify
 import torch.utils.data as torchdata
 
-sys.path.insert(0, '../utils/')
-from general_utils import *
+from utils.general_utils import *
 
 RawResult = collections.namedtuple("RawResult", "unique_id logits loss")
 all_ops = [
@@ -240,7 +239,7 @@ def read_mathqa_entry(entry, tokenizer, retrieve_mode, dataset_type,
                 table_text += this_sent
 
             context = " ".join(entry["pre_text"]) + " " + \
-                    " ".join(entry["post_text"]) + " " + table_text
+                " ".join(entry["post_text"]) + " " + table_text
 
         context = context.strip()
         # process "." and "*" in text

@@ -3,8 +3,7 @@ import sys
 import tqdm
 import collections
 
-sys.path.insert(0, '../utils/')
-from general_utils import *
+from utils.general_utils import *
 
 
 def read_txt(input_path):
@@ -128,7 +127,7 @@ def convert_single_mathqa_example(example, is_training, tokenizer,
         features_neg = []
         question = example.question
 
-        ### set label as -1 for test examples
+        # set label as -1 for test examples
         for i in range(len(all_text)):
             this_text = all_text[i]
             this_input_feature = wrap_single_pair(tokenizer, example.question,
@@ -349,7 +348,7 @@ def convert_train(json_in, json_out, topn, max_len, dataset_type):
         table = each_data["table"]
 
         all_retrieved = each_data["table_retrieved"] + \
-                        each_data["text_retrieved"]
+            each_data["text_retrieved"]
 
         false_retrieved = []
         for tmp in all_retrieved:
@@ -438,7 +437,7 @@ def convert_test(json_in, json_out, topn, max_len, dataset_type):
 
         table_sents = each_data['qa']['table_sents']
         all_retrieved = each_data["table_retrieved"] + \
-                        each_data["text_retrieved"]
+            each_data["text_retrieved"]
 
         sorted_dict = sorted(all_retrieved,
                              key=lambda kv: kv["score"],

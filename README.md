@@ -1,10 +1,12 @@
 
-# APOLLO: An Optimized Training Approach for Long-form Numerical Reasoning
+# APOLLO: An Optimized Training Approach for Long-form Numerical Reasoning (LREC-Coling 2024)
+
+Our paper is accepted by LREC-Coling 2024 !🥳🥳🥳
 
 This repo provides the code of APOLLO. In the paper, we adopt a number-aware negative sampling strategy in retriever to discriminate key numerical facts from others. Moreover, we design consistency-based reinforcement learning with target program augmentation, to increase program diversity and ultimately increase the execution accuracy.
 
 ***
-This repo is still developing, feel free to report bugs and we will fix them.
+
 ## How to cite
 If you extend or use this work, please cite the [paper](https://arxiv.org/abs/2212.07249) where it was introduced:
 
@@ -27,6 +29,18 @@ The FinQA and ConvFinQA challenge leaderboard is on CodaLab [https://codalab.lis
  - pytorch 1.7.1
  - huggingface transformers 4.4.2
  - sympy 1.9
+
+## Main Results
+
+Generator Results:
+
+![image](https://github.com/GasolSun36/APOLLO/blob/main/assets/generator_results.png)
+
+
+Retriever Results:
+
+![image](https://github.com/GasolSun36/APOLLO/blob/main/assets/retriever_results.png)
+
 
 ***
 ## Code
